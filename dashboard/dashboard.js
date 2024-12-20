@@ -1,3 +1,5 @@
+'use strict'
+
 let user = null;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,31 +43,42 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Could not fetch data");
       }
       const jsonData = await response.json();
+
       const todoList = document.getElementById('todo-list')
       jsonData.todos.map(task => {
-        const list = document.createElement('li');
-        list.textContent = task.todo
-        todoList.appendChild(list);
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  const updateTodo = async () => {
-    /* updating completed status of todo with id 1 */
-    try {
+        const todoWrap = document.createElement('li')
+        todoWrap.className = "todoWrap"
+        const todo = document.createElement('p');
+        const checkfield = document.createElement('input')
+        checkfield.type = "checkbox"
+        checkfield.addEventListener('change', () => {
 
-      const response = await fetch('https://dummyjson.com/todos/1', {
-        method: 'PUT', /* or PATCH */
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          completed: false,
         })
+        todo.textContent = task.todo
+        todoWrap.appendChild(checkfield)
+
+        todoWrap.appendChild(todo);
+        todoList.appendChild(todoWrap)
+
       })
     } catch (err) {
       console.log(err)
     }
   }
+  // const updateTodo = async () => {
+  //   try {
+
+  //     const response = await fetch('https://dummyjson.com/todos/1', {
+  //       method: 'PUT',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({
+  //         completed: false,
+  //       })
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
   getcurrentUser()
   getTodos()
   document.getElementById('logout-btn').addEventListener('click', () => {

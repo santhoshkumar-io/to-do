@@ -1,3 +1,5 @@
+'use strict'
+
 const validateUser = async (username, password) => {
   try {
     const response = await fetch("https://dummyjson.com/auth/login", {
