@@ -14,20 +14,18 @@ body {
   min-height: 100vh;
   position: relative;
 }
-.bg-image {
+.background-dashboard {
+  background-color: rgb(14, 14, 14);
   position: absolute;
+  height: 250px;
   width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -100;
+  z-index: -1;
 }
-a {
-  text-decoration: none;
-}
+
 .header {
-  background-color: #ffffff6c;
+  background-color: rgb(14, 14, 14);
   backdrop-filter: blur(3px);
-  color: #222;
+  color: #ffff;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -40,16 +38,18 @@ a {
   font-weight: bold;
 }
 
-.header .logout-btn {
-  background-image: linear-gradient(to right, #666664, #000000);
-  color: #fff;
+.header .logoutBtn {
+  background-color: #fff;
+  color: #000000;
   padding: 8px 15px;
   border-radius: 5px;
   border: 2px solid #222;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
-.header .logout-btn:hover {
-  background-image: linear-gradient(to right, #000000, #424242);
-  border: 2px solid #222;
+.header .logoutBtn:hover {
+  background-color: #000000;
+  border: 2px solid #ffff;
   color: #ffff;
 }
 .main {
@@ -62,25 +62,23 @@ a {
 #create-todo {
   padding: 20px 50px;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(14, 14, 14);
   border-radius: 5px;
   font-size: 1rem;
   box-sizing: border-box;
   outline: none;
   transition: border 0.3s;
-  border-color: #ea4cff;
 }
 
 #todo-list {
   background-color: #fff;
   margin: 20px 0;
   padding: 10px 10px;
-  border: 1px solid #ea4cff;
+  border: 1px solid rgb(14, 14, 14);
   border-radius: 5px;
 }
 input[type="checkbox"] {
   appearance: none;
-
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -96,7 +94,6 @@ input[type="checkbox"]:checked::before {
   height: 100%;
   background: linear-gradient(to right, rgb(58, 196, 255), rgb(231, 95, 255));
   border-radius: 50%;
-  border: 1px solid #ddd;
   text-align: center;
   color: #fff;
 }
@@ -107,12 +104,39 @@ input[type="checkbox"]:checked::before {
 .todoWrap {
   display: flex;
 }
-.todoWrap label {
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.todo-item label {
   display: flex;
   align-items: center;
-  text-decoration: none;
+  flex: 6;
 }
-
+.update-input {
+  display: flex;
+  align-items: center;
+  flex: 6;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+.update-input :focus {
+  border: none;
+  border-bottom: 1px solid black;
+}
+.todo-item i {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.completed {
+  text-decoration: line-through;
+  color: #aeaeae;
+}
 .footer {
   background-color: #222;
   color: white;

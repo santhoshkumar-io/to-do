@@ -19,7 +19,11 @@ const validateUser = async (username, password) => {
     document.location = './dashboard/dashboard.html';
     console.log(jsonData);
   } catch (error) {
-    console.log(error);
+
+    const errorMessage = document.getElementById("error");
+
+    errorMessage.textContent = "Wrong credentials!"
+
   }
 };
 
